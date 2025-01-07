@@ -20,16 +20,12 @@ Para utilizar o include, basta baixar o g_sqlite.inc e adicioná-lo em sua pasta
 ```
 new Query[90];
 
-
 format(Query, sizeof Query, "SELECT `id` FROM `player` WHERE nome = '%s' LIMIT 1;", PlayerName(playerid));
-
 
 new DBResult:result = db_query(dbSQL, Query);
 
-
 if(db_num_rows(result) > 0)
 {
-
 
   id = db_get_field_assoc_int(result, "id");
 
