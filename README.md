@@ -8,14 +8,14 @@ Para utilizar o include, basta baixar o g_sqlite.inc e adicioná-lo em sua pasta
 
 # Uso
 
-Primeiramente, vale lembrar a diferença entre usar a include, usar o sqlite padrão do samp ou usar outra include (como as includes que salvam em .ini).
+## Primeiramente, vale lembrar a diferença entre usar a include, usar o sqlite padrão do samp ou usar outra include (como as includes que salvam em .ini).
 
-1° Ponto: Salvamento .ini não é estruturado, o que pode tirar a organização, facilidade e até mesmo desempenho do servidor.
-2° Ponto: As consultas sqlite, podem ser chatas e até difíceis, tanto para quem sabe ou não utiliza-lo.
+### 1° Ponto: Salvamento .ini não é estruturado, o que pode tirar a organização, facilidade e até mesmo desempenho do servidor.
+### 2° Ponto: As consultas sqlite, podem ser chatas e até difíceis, tanto para quem sabe ou não utiliza-lo.
 
-Diferenças práticas entre usar a include ou a forma antiga (consulta com o db_query)
+## Diferenças práticas entre usar a include ou a forma antiga (consulta com o db_query)
 
-Com o db_query:
+### Com o db_query:
 
 new Query[90];
 
@@ -34,7 +34,7 @@ if(db_num_rows(result) > 0)
 
 }
 
-Com o g_sqlite:
+### Com o g_sqlite:
 
 id = GSQL_GetInt("player", "id", "nome", PlayerName(playerid));
 
