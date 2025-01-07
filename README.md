@@ -19,9 +19,12 @@ Com o db_query:
 
 new Query[90];
 
+
 format(Query, sizeof Query, "SELECT `id` FROM `player` WHERE nome = '%s' LIMIT 1;", PlayerName(playerid));
 
+
 new DBResult:result = db_query(dbSQL, Query);
+
 
 if(db_num_rows(result) > 0)
 {
