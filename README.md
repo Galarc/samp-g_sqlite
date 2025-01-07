@@ -28,6 +28,8 @@ new DBResult:result = db_query(dbSQL, Query);
 
 if(db_num_rows(result) > 0)
 {
+
+
   id = db_get_field_assoc_int(result, "id");
 
 }
