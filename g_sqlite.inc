@@ -16,7 +16,7 @@
     #define DB_GetFieldIntByName db_get_field_assoc_int
     #define DB_GetFieldFloatByName db_get_field_assoc_float
     #define DB_GetFieldStringByName db_get_field_assoc
-    // Macro pra getar um argumento string (em fun��es, retirado do https://github.com/GRGServer/SAMP/tree/master)
+    // Macro pra getar um argumento string (em funções, retirado do https://github.com/GRGServer/SAMP/tree/master)
     #define GetStringArg(%0,%1); \
     for (new i_%0 = 0; ; ++i_%0) \
     { \
@@ -36,7 +36,7 @@
             new length = strlen(query);
             new cantigo, ultimoc, argid = 2;
             new bool:stringachou = false;
-            for(new c; c < length; c++) {
+            for(new c; c <= length; c++) {
                 ultimoc = c;
                 if(query[c] == '%') {
 
@@ -202,17 +202,14 @@ stock GSQL_SetInt(const table[], const column[], value, const wherecolumn[] = "n
 
     new cmp_whc = strcmp(wherecolumn, "nullgsql"), cmp_wh = strcmp(where, "nullgsql");
 
-    if(!cmp_whc && !cmp_wh) { // Caso não tenha uma clausula where, apenas para adicionar um valor qualquer
+    if(!cmp_whc && !cmp_wh) { // Caso nÃ£o tenha uma clausula where, apenas para adicionar um valor qualquer
 
         DB_FreeResultSet(DB_ExecuteQuery(g_DB, "INSERT INTO %s (%s) VALUES (%d);", table, column, value));
         return 1;
     }
     else if(cmp_whc && cmp_wh) { // Caso tenha a clausula where, ou seja, update
 
-        new strvalue[10];
-        valstr(strvalue, value);
-        if(!GSQL_ValueExists(table, column, strvalue)) return 0;
-        DB_FreeResultSet(DB_ExecuteQuery(g_DB, "UPDATE %s SET `%s` = '%d' WHERE `%s` = '%s';", table, column, value, wherecolumn, where));
+        DB_FreeResultSet(DB_ExecuteQuery(g_DB, "UPDATE %s SET `%s` = %d WHERE `%s` = '%s';", table, column, value, wherecolumn, where));
         return 1;
     }
     else{
@@ -229,7 +226,7 @@ stock GSQL_SetString(const table[], const column[], const value[], const whereco
 
     new cmp_whc = strcmp(wherecolumn, "nullgsql"), cmp_wh = strcmp(where, "nullgsql");
 
-    if(!cmp_whc && !cmp_wh) { // Caso não tenha uma clausula where, apenas para adicionar um valor qualquer
+    if(!cmp_whc && !cmp_wh) { // Caso nÃ£o tenha uma clausula where, apenas para adicionar um valor qualquer
 
         DB_FreeResultSet(DB_ExecuteQuery(g_DB, "INSERT INTO %s (%s) VALUES ('%s');", table, column, value));
     }
@@ -248,7 +245,7 @@ stock GSQL_SetFloat(const table[], const column[], Float:value, const wherecolum
 
     new cmp_whc = strcmp(wherecolumn, "nullgsql"), cmp_wh = strcmp(where, "nullgsql");
 
-    if(!cmp_whc && !cmp_wh) { // Caso não tenha uma clausula where, apenas para adicionar um valor qualquer
+    if(!cmp_whc && !cmp_wh) { // Caso nÃ£o tenha uma clausula where, apenas para adicionar um valor qualquer
 
         DB_FreeResultSet(DB_ExecuteQuery(g_DB, "INSERT INTO %s (%s) VALUES (%f);", table, column, value));
     }
@@ -267,7 +264,7 @@ stock GSQL_SetBool(const table[], const column[], bool:value, const wherecolumn[
 
     new cmp_whc = strcmp(wherecolumn, "nullgsql"), cmp_wh = strcmp(where, "nullgsql");
 
-    if(!cmp_whc && !cmp_wh) { // Caso não tenha uma clausula where, apenas para adicionar um valor qualquer
+    if(!cmp_whc && !cmp_wh) { // Caso nÃ£o tenha uma clausula where, apenas para adicionar um valor qualquer
 
         DB_FreeResultSet(DB_ExecuteQuery(g_DB, "INSERT INTO %s (%s) VALUES (%b);", table, column, value));
     }
